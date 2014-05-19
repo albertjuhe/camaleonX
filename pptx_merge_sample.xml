@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<profile>
+    <metas>
+        <meta key="project_name" value="pptx_sample"/>
+        <meta key="type" value="pptx"/> <!-- docx, pptx -->
+    </metas>
+    <contents>
+        <content include="1" href="C:\camaleonx_github\camaleonX\documents\1.pptx"/>
+        <content  include="1" href="C:\camaleonx_github\camaleonX\documents\2.pptx"/>
+        <content include="1" href="C:\camaleonx_github\camaleonX\documents\3.pptx"/>
+        <content  include="1" href="C:\camaleonx_github\camaleonX\documents\4.pptx"/>
+    </contents>
+</profile>

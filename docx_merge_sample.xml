@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<profile>
+    <metas>
+        <meta key="project_name" value="Teoria de les relacions laborals II"/>
+        <meta key="type" value="docx"/> <!-- docx, pptx -->
+    </metas>
+    <contents>
+        <content include="1" href="C:\camaleonx\documents\1.docx"/>
+        <content  include="1" href="C:\camaleonx\documents\2.docx"/>
+    </contents>
+</profile>
