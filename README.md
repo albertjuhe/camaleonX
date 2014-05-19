@@ -23,6 +23,7 @@ docx_merge_sample.xml The main file where are the files to merge.
 
 doc_merge_sample.xml its a file that contains what marge and in which format merge.
 
+```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <profile>
     <metas>
@@ -34,5 +35,5 @@ doc_merge_sample.xml its a file that contains what marge and in which format mer
         <content  include="1" href="C:\camaleonx\documents\2.docx"/>
     </contents>
 </profile>
-
+```
 
