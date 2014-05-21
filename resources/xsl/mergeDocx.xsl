@@ -162,6 +162,10 @@
         </xsl:copy>
     </xsl:template>
     
+    <!-- 
+        Les imatges dins un document han de tenir un identificador únic, per
+        això recalculem cada vegada el id del wp:docPr
+    -->
     <xsl:template match="wp:docPr">
         
         <xsl:copy>

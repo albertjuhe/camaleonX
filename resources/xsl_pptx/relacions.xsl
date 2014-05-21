@@ -207,6 +207,17 @@
                 </xsl:copy>
             </xsl:when>
             <xsl:when
+                test="@Type='http://schemas.microsoft.com/office/2007/relationships/hdphoto'">
+                <xsl:copy>
+                    <xsl:copy-of select="@Type | @Id | @TargetMode"/>
+                    <xsl:attribute name="Target">
+                        <xsl:value-of
+                            select="replace(@Target,'../media/',concat('../media/media',$numdoc,'/'))"
+                        />
+                    </xsl:attribute>
+                </xsl:copy>
+            </xsl:when>
+            <xsl:when
                 test="@Type='http://schemas.openxmlformats.org/officeDocument/2006/relationships/image'">
                 <xsl:copy>
                     <xsl:copy-of select="@Type | @Id | @TargetMode"/>
