@@ -45,6 +45,9 @@ Example in doc_merge_sample.xml
 ```
 
 Inside the XML file you define the documents to merge and the type of the documents.
-The documents to merge are in the contents tag and the type of the document are in the meta with key type.
+The documents to merge are in the contents tag and the type of the document are in the meta with key type. 
+
+For example, if you want to merge docs files: ```xml <meta key="type" value="docx"/> ``` if you want to merge power point files ```xml <meta key="type" value="pptx"/> ```
+
 For each document that you want to merge you have to create a new tag content with the attribute href, this attribute is the document location.
 
