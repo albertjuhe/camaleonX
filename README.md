@@ -1,8 +1,7 @@
 camaleonX
 =========
 
-This is a software that merge Microsoft Office Documents 2003, Word and PowerPoint ( docx and pptx) in one file.
-Currently iss in Beta state.
+This is a software that merge Microsoft Office Documents 2003, Word and PowerPoint ( docx and pptx) in one file from command line. Currently is in Beta state.
 
 ##Development
 
