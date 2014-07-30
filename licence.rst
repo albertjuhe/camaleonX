@@ -1,9 +1,9 @@
-# CamaleonX licensing terms
+#CamaleonX licensing terms
 
 CamaleonX is free software, and you may use it under the terms of either the
 MIT or the GNU GPL licenses:
 
-## GNU GPLv3
+##GNU GPLv3
 
 You can redistribute this program and/or modify it under the terms of the
 GNU General Public License as published by the Free Software Foundation,
@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with this program. See LICENSE-GPL, or, if this file is missing,
 <http://www.gnu.org/licenses/>.
 
-## MIT
+##MIT
 
 You may use the software under the terms of the MIT license, which can be
 found in LICENSE-MIT, or, if this file is missing,
