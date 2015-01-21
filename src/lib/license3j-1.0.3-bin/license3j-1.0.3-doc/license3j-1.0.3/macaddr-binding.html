@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>License3j - Binding a license to network card</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="http://www.verhas.com/" id="bannerLeft">
+    
+                                    <img src="http://www.verhas.com/images/logo.jpg" alt="" />
+    
+            </a>
+                          <span id="bannerRight">
+    
+                                            <img src="" alt="" />
+    
+            </span>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 2010-06-06
+                  &nbsp;| Version: 1.0.3
+                      </div>
+            <div class="xright">            <a href="http://www.apache.org/" class="externalLink">Apache</a>
+            |
+                <a href="http://maven.apache.org/" class="externalLink">Maven 2</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Verhas & Verhas Software Craftsmen</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="http://www.verhas.com" class="externalLink">Company Home page</a>
+          </li>
+          </ul>
+              <h5>License3j Documentation</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Home Page</a>
+          </li>
+              
+    <li class="none">
+                    <a href="faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="apidocs/index.html">Api Reference</a>
+          </li>
+          </ul>
+              <h5>Download</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="license3j-1.0.3-src.zip">source</a>
+          </li>
+              
+    <li class="none">
+                    <a href="license3j-1.0.3-doc.zip">documentation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="license3j-1.0.3-bin.zip">binaries</a>
+          </li>
+          </ul>
+              <h5>Project Documentation</h5>
+            <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-info.html">Project Information</a>
+                </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>Binding a license to network card</h2>
+<p>You may want to restrict the use of your software to a certain machine. To do this license3j provides a class <tt>HardwareBinder</tt> that makes it possible to get a hardware ID. You can encode this ID into the license as a <i>feature</i> and when the license is checked you can calculate it again and compare the value to the one that is in the license.</p>
+<p>This is more restrictive than just a plain license, because it will not allow the user to move the license from one machine to another, and it will also require some means to generate the ID of the machine that he wants the software to run on before the license is created.</p>
+<p>This usually means that you have to provide an auxilliary program, that contains license3j and calculates the machine ID. Another approach is to provide the program you want to protect and even without a valid license it can be used to print out the ID.</p>
+<p>This ID is calculated from the network interfaces of the machine. The code in <tt>HardwareBinder</tt> uses the network interfaces information to generate a UUID for the machine. The code will take all network cards into account as well as the architecture of the machine running your program. The &quot;architecture&quot; of the machine is simply the string returned by the Java api <tt>System.getProperty(&quot;os.arch&quot;)</tt>.</p>
+<p>You can alter the behaviour of <tt>HardwareBinder</tt> using methods <tt>ignore</tt><i>xxx</i><tt>()</tt> and the method <tt>setUseHwAddress()</tt>. If you are sure that your code runs under Java6 or later you can tell <tt>HardwareBinder</tt> to use the MAC address of the interface cards when calculating the UUID. The default is not to use the MAC address into account.</p>
+<p>Virtual, loopback and point-to-point network cards are ignores during the calculation of the UUID.</p>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2010
+    
+          Verhas & Verhas Software Craftsmen Ltd.
+          
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

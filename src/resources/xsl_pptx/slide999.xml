@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"
+    xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+    xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
+    <p:cSld>
+        <p:spTree>
+            <p:nvGrpSpPr>
+                <p:cNvPr id="1" name=""/>
+                <p:cNvGrpSpPr/>
+                <p:nvPr/>
+            </p:nvGrpSpPr>
+            <p:grpSpPr>
+                <a:xfrm>
+                    <a:off x="0" y="0"/>
+                    <a:ext cx="0" cy="0"/>
+                    <a:chOff x="0" y="0"/>
+                    <a:chExt cx="0" cy="0"/>
+                </a:xfrm>
+            </p:grpSpPr>
+            <p:sp>
+                <p:nvSpPr>
+                    <p:cNvPr id="388099" name="Rectangle 3"/>
+                    <p:cNvSpPr>
+                        <a:spLocks noGrp="1" noChangeArrowheads="1"/>
+                    </p:cNvSpPr>
+                    <p:nvPr>
+                        <p:ph type="subTitle" sz="quarter" idx="1"/>
+                    </p:nvPr>
+                </p:nvSpPr>
+                <p:spPr>
+                    <a:xfrm>
+                        <a:off x="581025" y="533400"/>
+                        <a:ext cx="8880475" cy="5181600"/>
+                    </a:xfrm>
+                </p:spPr>
+                <p:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                        <a:pPr marL="0" indent="0">
+                            <a:buFontTx/>
+                            <a:buNone/>
+                        </a:pPr>
+                        <a:r>
+                            <a:rPr lang="en-US" sz="4800" dirty="0" smtClean="0"/>
+                            <a:t>[[nombre_proyecto]]</a:t>
+                        </a:r>
+                        <a:r>
+                            <a:rPr lang="en-US" dirty="0"/>
+                            <a:t> </a:t>
+                        </a:r>
+                    </a:p>
+                    <a:p>
+                        <a:pPr marL="0" indent="0"/>
+                        <a:endParaRPr lang="en-US" dirty="0"/>
+                    </a:p>
+                    <a:p>
+                        <a:pPr marL="0" indent="0">
+                            <a:buFontTx/>
+                            <a:buNone/>
+                        </a:pPr>
+                        <a:r>
+                            <a:rPr lang="en-US" sz="2800" dirty="0" smtClean="0"/>
+                            <a:t>[[nombre_cliente]]</a:t>
+                        </a:r>
+                    </a:p>
+                    <a:p>
+                        <a:pPr marL="0" indent="0">
+                            <a:buNone/>
+                        </a:pPr>
+                        <a:r>
+                            <a:rPr lang="en-US" sz="2800" dirty="0" smtClean="0"/>
+                            <a:t>[[fecha]]</a:t>
+                        </a:r>
+                    </a:p>
+                    <a:p>
+                        <a:pPr marL="0" indent="0">
+                            <a:buNone/>
+                        </a:pPr>
+                        <a:r>
+                            <a:rPr lang="ca-ES" sz="2800" dirty="0" smtClean="0"/>
+                            <a:t>[[ciudad]]</a:t>
+                        </a:r>
+                    </a:p>
+                    <a:p>
+                        <a:pPr marL="0" indent="0">
+                            <a:buNone/>
+                        </a:pPr>
+                        <a:r>
+                            <a:rPr lang="ca-ES" sz="2800" dirty="0" smtClean="0"/>
+                            <a:t>[[area]]</a:t>
+                        </a:r>
+                    </a:p>
+                    <a:p>
+                        <a:pPr marL="0" indent="0">
+                            <a:buNone/>
+                        </a:pPr>
+                        <a:r>
+                            <a:rPr lang="ca-ES" sz="2800" dirty="0" smtClean="0"/>
+                            <a:t>[[referencia_concurso]]</a:t>
+                        </a:r>
+                        <a:endParaRPr lang="ca-ES" sz="2800" dirty="0" smtClean="0"/>
+                    </a:p>
+                    <a:p>
+                        <a:pPr marL="0" indent="0">
+                            <a:buNone/>
+                        </a:pPr>
+                        <a:r>
+                            <a:rPr lang="ca-ES" sz="2800" dirty="0" smtClean="0"/>
+                            <a:t>[[laboratorios_internos]]</a:t>
+                        </a:r>
+                        <a:endParaRPr lang="ca-ES" sz="2800" dirty="0" smtClean="0"/>
+                    </a:p>
+                    <a:p>
+                        <a:pPr marL="0" indent="0">
+                            <a:buNone/>
+                        </a:pPr>
+                        <a:r>
+                            <a:rPr lang="ca-ES" sz="2800" dirty="0" smtClean="0"/>
+                            <a:t>[[objetivos]]</a:t>
+                        </a:r>
+                    </a:p>
+                    <a:p>
+                        <a:pPr marL="0" indent="0">
+                            <a:buNone/>
+                        </a:pPr>
+                        <a:endParaRPr lang="en-US" sz="2800" dirty="0" smtClean="0"/>
+                    </a:p>
+                    <a:p>
+                        <a:pPr marL="0" indent="0">
+                            <a:buFontTx/>
+                            <a:buNone/>
+                        </a:pPr>
+                        <a:endParaRPr lang="en-US" sz="2800" dirty="0"/>
+                    </a:p>
+                </p:txBody>
+            </p:sp>
+            <p:sp>
+                <p:nvSpPr>
+                    <p:cNvPr id="4" name="3 Marcador de pie de página"/>
+                    <p:cNvSpPr>
+                        <a:spLocks noGrp="1"/>
+                    </p:cNvSpPr>
+                    <p:nvPr>
+                        <p:ph type="ftr" sz="quarter" idx="4294967295"/>
+                    </p:nvPr>
+                </p:nvSpPr>
+                <p:spPr>
+                    <a:xfrm>
+                        <a:off x="0" y="6178550"/>
+                        <a:ext cx="4891088" cy="279400"/>
+                    </a:xfrm>
+                    <a:prstGeom prst="rect">
+                        <a:avLst/>
+                    </a:prstGeom>
+                </p:spPr>
+                <p:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                        <a:r>
+                            <a:rPr lang="en-US"/>
+                            <a:t> </a:t>
+                        </a:r>
+                      
+                        <a:endParaRPr lang="en-US"/>
+                    </a:p>
+                </p:txBody>
+            </p:sp>
+        </p:spTree>
+    </p:cSld>
+    <p:clrMapOvr>
+        <a:masterClrMapping/>
+    </p:clrMapOvr>
+    <p:timing>
+        <p:tnLst>
+            <p:par>
+                <p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"/>
+            </p:par>
+        </p:tnLst>
+    </p:timing>
+</p:sld>

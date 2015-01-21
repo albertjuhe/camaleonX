@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>License3j - Fraud license3j</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="http://www.verhas.com/" id="bannerLeft">
+    
+                                    <img src="http://www.verhas.com/images/logo.jpg" alt="" />
+    
+            </a>
+                          <span id="bannerRight">
+    
+                                            <img src="" alt="" />
+    
+            </span>
+            <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 2010-06-06
+                  &nbsp;| Version: 1.0.3
+                      </div>
+            <div class="xright">            <a href="http://www.apache.org/" class="externalLink">Apache</a>
+            |
+                <a href="http://maven.apache.org/" class="externalLink">Maven 2</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>Verhas & Verhas Software Craftsmen</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="http://www.verhas.com" class="externalLink">Company Home page</a>
+          </li>
+          </ul>
+              <h5>License3j Documentation</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Home Page</a>
+          </li>
+              
+    <li class="none">
+                    <a href="faq.html">FAQ</a>
+          </li>
+              
+    <li class="none">
+                    <a href="apidocs/index.html">Api Reference</a>
+          </li>
+          </ul>
+              <h5>Download</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="license3j-1.0.3-src.zip">source</a>
+          </li>
+              
+    <li class="none">
+                    <a href="license3j-1.0.3-doc.zip">documentation</a>
+          </li>
+              
+    <li class="none">
+                    <a href="license3j-1.0.3-bin.zip">binaries</a>
+          </li>
+          </ul>
+              <h5>Project Documentation</h5>
+            <ul>
+              
+                
+              
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+            
+      
+              
+        <li class="collapsed">
+                    <a href="project-info.html">Project Information</a>
+                </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <p>There is no 100% secure license handling and license3j can be overcome. This is not the question how to make it total secure, but rather how much a code can do to make so secure that there is no reason to brake the license enforcement.</p>
+<p>License3j runs in a Java environment. The easiest way to store the key ring file is in a resource file inside a jar or war file. The format of this file is simple and a ZIP program can be used even by a novide user to replace the ring file to their own ring file and generate their own licenses. To avoid this license3j provides api to check the checksum of the key ring file and also the id of the key that was used to decode the license.</p>
+<p>The checksum of the key ring file has to be copied into the Java source code and you may even apply (if you want) some obfucation code so it will be hard to replace it and when the key ring is loaded it will ensure that the ring itself was not tampered.</p>
+<div class="source"><pre>  4.        lic.loadKeyRingFromResource(&quot;pubring.gpg&quot;, digest);</pre>
+</div>
+<p>License3j also provides easy way to get this byte array in Java syntax. Just dump an ecoded license onto your screen using the program <tt>license3j.bat</tt> and you will get not only the license text but also the ID of the key that was used to encode the key and also the digest of the key ring.</p>
+<p>In case you have more than one signing key for licenses you can also check which key was used to sign the license. You may limit the function of your program based on the signing key. For example you will not accept a commercial license that was signed by a demo license key. To do that you can access the key ID calling the method <tt>getDecodeKeyId()</tt>:</p>
+<div class="source"><pre>        assert -3623885160523215197L == lic.getDecodeKeyId();</pre>
+</div>
+<p>The code above you can see in its environment in the unit test <tt>TestEncoding.java</tt> available in the source distrubution of license3j.</p>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2010
+    
+          Verhas & Verhas Software Craftsmen Ltd.
+          
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>
