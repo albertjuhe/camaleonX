@@ -123,7 +123,7 @@ public class standalonePPTX {
 
         System.out.println("Result file saved OK.");
 
-        File tempFile = new File(tmp + xml_file_name + "\\");
+        File tempFile = new File(tmp + xml_file_name + "/");
        
         fileUtils.deleteDirectory(tempFile);
 
@@ -174,7 +174,7 @@ public class standalonePPTX {
                 stateMerge = m.run(iteracio);
                 //System.out.println("Merge OK.");
 
-                file1 = new File(tmp + xml_file_name + "\\" + Path.PATH_FITXER_ORIGEN.eval());
+                file1 = new File(tmp + xml_file_name + "/" + Path.PATH_FITXER_ORIGEN.eval());
             } else {
                 System.err.println("Merge KO.");
             }
@@ -192,8 +192,8 @@ public class standalonePPTX {
 
         for (int i = 0; i < mediaTypes.length; i++) {
             String pathMultimedia = pathFile + Path.PATH_FITXER_TMP_PPTX.eval() + mediaTypes[i];
-            String mediaFolder = pathFile + Path.PATH_FITXER_ORIGEN.eval() + "ppt\\" + mediaTypes[i] + "\\";
-            f.copyFolder(new File(pathMultimedia), new File(mediaFolder + "\\"));
+            String mediaFolder = pathFile + Path.PATH_FITXER_ORIGEN.eval() + "ppt/" + mediaTypes[i] + "/";
+            f.copyFolder(new File(pathMultimedia), new File(mediaFolder + "/"));
         }
     }
 }

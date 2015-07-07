@@ -59,8 +59,8 @@ public class TransformDocx extends transform {
 
         logger.info("Inici de les transformacions XSL");
 
-        String input = tmp + job + "\\file1\\word\\document.xml";
-        String output = tmp + job + "\\result\\word\\document.xml";
+        String input = tmp + job + "/file1/word/document.xml";
+        String output = tmp + job + "/result/word/document.xml";
         String stylesheet = xsl_path + "mergeDocx.xsl";
 
         params.put("docx.merge", tmp.replace('\\', '/') + "/" + job + "/file2/word");
@@ -72,16 +72,16 @@ public class TransformDocx extends transform {
         params.put("docx.titol", "");
         xslTranformacio.execute(input, output, stylesheet, params);
 
-        input = tmp + job + "\\file1\\word\\_rels\\document.xml.rels";
-        output = tmp + job + "\\result\\word\\_rels\\document.xml.rels";
+        input = tmp + job + "/file1/word/_rels/document.xml.rels";
+        output = tmp + job + "/result/word/_rels/document.xml.rels";
         stylesheet = xsl_path + "mergeRelacions.xsl";
 
         params.put("docx.merge", tmp.replace('\\', '/') + "/" + job + "/file2/word/_rels/document.xml.rels");
         params.put("docx.media", String.valueOf(iteracio));
         xslTranformacio.execute(input, output, stylesheet, params);
 
-        input = tmp + job + "\\file1\\word\\styles.xml";
-        output = tmp + job + "\\result\\word\\styles.xml";
+        input = tmp + job + "/file1/word/styles.xml";
+        output = tmp + job + "/result/word/styles.xml";
         stylesheet = xsl_path + "mergeStyles.xsl";
 
         params.put("docx.merge", tmp.replace('\\', '/') + "/" + job + "/file2/word/styles.xml");
@@ -92,13 +92,13 @@ public class TransformDocx extends transform {
         Utilitats fileUtils = new Utilitats();
 
         try {
-            fileUtils.copyFile(new File(tmp + job + "\\file2\\[Content_Types].xml"), new File(tmp + job + "\\file2\\Content_Types.xml"));
+            fileUtils.copyFile(new File(tmp + job + "/file2/[Content_Types].xml"), new File(tmp + job + "/file2/Content_Types.xml"));
         } catch (IOException e) {
             logger.error(e.getMessage());
         }
 
-        input = tmp + job + "\\file1\\[Content_Types].xml";
-        output = tmp + job + "\\result\\[Content_Types].xml";
+        input = tmp + job + "/file1/[Content_Types].xml";
+        output = tmp + job + "/result/[Content_Types].xml";
         stylesheet = xsl_path + "index.xsl";
 
         params.put("docx.merge", tmp.replace('\\', '/') + "/" + job + "/file2/Content_Types.xml");
@@ -106,13 +106,13 @@ public class TransformDocx extends transform {
 
         xslTranformacio.execute(input, output, stylesheet, params);
 
-        File numbering1 = new File(tmp + job + "\\file1\\word\\numbering.xml");
-        File numbering2 = new File(tmp + job + "\\file2\\word\\numbering.xml");
+        File numbering1 = new File(tmp + job + "/file1/word/numbering.xml");
+        File numbering2 = new File(tmp + job + "/file2\\word/numbering.xml");
 
         if (numbering1.exists() && numbering2.exists()) {
 
-            input = tmp + job + "\\file1\\word\\numbering.xml";
-            output = tmp + job + "\\result\\word\\numbering.xml";
+            input = tmp + job + "/file1/word/numbering.xml";
+            output = tmp + job + "/result/word/numbering.xml";
             stylesheet = xsl_path + "mergeNumbering.xsl";
 
             params.put("docx.iteracio", String.valueOf(iteracio + 1));
@@ -122,7 +122,7 @@ public class TransformDocx extends transform {
         } else if (numbering1.exists()) {
             try {
                 fileUtils.copyFile(numbering1, new File(tmp + job
-                        + "\\result\\word\\numbering.xml"));
+                        + "/result/word/numbering.xml"));
             } catch (IOException ioe) {
                 logger.error(ioe.getMessage());
             }
@@ -130,7 +130,7 @@ public class TransformDocx extends transform {
         } else if (numbering2.exists()) {
             try {
                 fileUtils.copyFile(numbering2, new File(tmp + job
-                        + "\\result\\word\\numbering.xml"));
+                        + "/result/word/numbering.xml"));
             } catch (IOException ioe) {
                 logger.error(ioe.getMessage());
             }

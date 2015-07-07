@@ -70,8 +70,8 @@ public class TransformPptx extends transform {
         boolean ultimaiteracio = (iteracio == (nFitxers - 1));
         //logger.info("Inici de les transformacions XSL");
 
-        String input = tmp + job + "\\file1\\[Content_Types].xml";
-        String output = tmp + job + "\\result\\[Content_Types].xml";
+        String input = tmp + job + "/file1/[Content_Types].xml";
+        String output = tmp + job + "/result/[Content_Types].xml";
         String stylesheet = this.xsl_path + "index.xsl";
 
         params.put("pptx.job", job);
@@ -91,13 +91,13 @@ public class TransformPptx extends transform {
         xslTranformacio.execute(input, output, stylesheet, params);
         
         //Creació de l'element relacio
-        output = tmp + job + "\\relation.xml";
+        output = tmp + job + "/relation.xml";
         stylesheet = this.xsl_path + "relacions_files.xsl";
         xslTranformacio.execute(input, output, stylesheet, params);
         //notesMaster1.xml
-        File f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt\\notesMasters\\");
+        File f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt/notesMasters/");
         //notesMaster2.xml
-        File f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "notesMasters\\");
+        File f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "notesMasters/");
         //el parametre es el numero de fitxers es mes un
         this.copyRenumberedFiles(f1, f2, job, true, false, iteracio, ultimaiteracio);
         
@@ -108,63 +108,63 @@ public class TransformPptx extends transform {
         this.copyRenumberedFiles(f1, f2, job, true, false, iteracio, ultimaiteracio);
 */
 
-        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt\\theme\\");
-        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "theme\\");
+        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt/theme/");
+        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "theme/");
 
         //el parametre es el numero de fitxers es mes un
         this.copyRenumberedFiles(f1, f2, job, false, false, iteracio, ultimaiteracio);
 
-        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt\\tags\\");
-        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "tags\\");
+        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt/tags/");
+        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "tags/");
 
         //el parametre es el numero de fitxers es mes un
         this.copyRenumberedFiles(f1, f2, job, false, false, iteracio, ultimaiteracio);
 
-        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt\\notesSlides\\");
-        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "notesSlides\\");
+        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt/notesSlides/");
+        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "notesSlides/");
 
         //el parametre es el numero de fitxers es mes un
         this.copyRenumberedFiles(f1, f2, job, true, false, iteracio, ultimaiteracio);
         
-        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt\\charts\\");
-        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "charts\\");
+        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt/charts/");
+        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "charts/");
 
         //el parametre es el numero de fitxers es mes un
         this.copyRenumberedFiles(f1, f2, job, true, false, iteracio, ultimaiteracio);
 
 
-        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt\\slideMasters\\");
-        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "slideMasters\\");
-
-        //el parametre es el numero de fitxers es mes un
-        this.copyRenumberedFiles(f1, f2, job, true, false, iteracio, ultimaiteracio);
-
-
-
-        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt\\slideLayouts\\");
-        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "slideLayouts\\");
+        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt/slideMasters/");
+        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "slideMasters/");
 
         //el parametre es el numero de fitxers es mes un
         this.copyRenumberedFiles(f1, f2, job, true, false, iteracio, ultimaiteracio);
 
 
 
-        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt\\handoutMasters\\");
-        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "handoutMasters\\");
+        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt/slideLayouts/");
+        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "slideLayouts/");
 
         //el parametre es el numero de fitxers es mes un
         this.copyRenumberedFiles(f1, f2, job, true, false, iteracio, ultimaiteracio);
 
 
-        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt\\slides\\");
-        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "slides\\");
+
+        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt/handoutMasters/");
+        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "handoutMasters/");
+
+        //el parametre es el numero de fitxers es mes un
+        this.copyRenumberedFiles(f1, f2, job, true, false, iteracio, ultimaiteracio);
+
+
+        f1 = new File(tmp + job + Path.PATH_FITXER_MERGE.eval() + "ppt/slides/");
+        f2 = new File(tmp + job + Path.PATH_FITXER_TMP_PPTX.eval() + "slides/");
 
         //el parametre es el numero de fitxers es mes un
         this.nSlides = this.copyRenumberedFiles(f1, f2, job, true, true, iteracio, ultimaiteracio);
 
 
-        input = tmp + job + "\\relationsDrawing.xml";
-        output = tmp + job + "\\tmp.tmp";
+        input = tmp + job + "/relationsDrawing.xml";
+        output = tmp + job + "/tmp.tmp";
         stylesheet = this.xsl_path + "drawing.xsl";
 
         params.put("numdoc", String.valueOf(this.iteracio + 1));
@@ -174,8 +174,8 @@ public class TransformPptx extends transform {
         //this.execute(input, output, stylesheet, params);
         xslTranformacio.execute(input, output, stylesheet, params);
 
-        input = tmp + job + "\\file1\\ppt\\_rels\\presentation.xml.rels";
-        output = tmp + job + "\\result\\ppt\\_rels\\presentation.xml.rels";
+        input = tmp + job + "/file1/ppt/_rels/presentation.xml.rels";
+        output = tmp + job + "/result/ppt/_rels/presentation.xml.rels";
         stylesheet = this.xsl_path + "mergeRelacions.xsl";
 
         params.put("pptx.numrelacions", "file:/" + tmp.replace('\\', '/') + job + "/num_relation.xml");
@@ -190,11 +190,11 @@ public class TransformPptx extends transform {
         //this.execute(input, output, stylesheet, params);
         xslTranformacio.execute(input, output, stylesheet, params);
 
-        input = tmp + job + "\\file1\\ppt\\presentation.xml";
-        output = tmp + job + "\\result\\ppt\\presentation.xml";
+        input = tmp + job + "/file1/ppt/presentation.xml";
+        output = tmp + job + "/result/ppt/presentation.xml";
         stylesheet = this.xsl_path + "presentacion.xsl";
         fonts fontsFiles = new fonts();
-        int maxId = fontsFiles.countMaxId(tmp + job + "\\file1\\ppt\\fonts\\");
+        int maxId = fontsFiles.countMaxId(tmp + job + "/file1/ppt/fonts/");
 
 
 
@@ -296,11 +296,11 @@ public class TransformPptx extends transform {
 
 
                     newFileNameAux = originalFileName + String.valueOf(numNouFitxer) + fileFormat;
-                    File newFile = new File(destFile.getPath() + "\\" + newFileNameAux);
+                    File newFile = new File(destFile.getPath() + "/" + newFileNameAux);
 
                     if (originalFileName.equals("slideMaster")) {
-                        input = srcFile.getAbsolutePath() + "\\" + files[i].getName();
-                        output = destFile.getAbsolutePath() + "\\" + newFileNameAux;
+                        input = srcFile.getAbsolutePath() + "/" + files[i].getName();
+                        output = destFile.getAbsolutePath() + "/" + newFileNameAux;
                         stylesheet = this.xsl_path + "relacions.xsl";
 
                         HashMap<String, String> params = new HashMap();
@@ -324,8 +324,8 @@ public class TransformPptx extends transform {
                     }
 
                     if (cridarXSL) {
-                        input = srcFile.getAbsolutePath() + "\\_rels\\" + files[i].getName() + ".rels";
-                        output = destFile.getAbsolutePath() + "\\_rels\\" + newFileNameAux + ".rels";
+                        input = srcFile.getAbsolutePath() + "/_rels/" + files[i].getName() + ".rels";
+                        output = destFile.getAbsolutePath() + "/_rels/" + newFileNameAux + ".rels";
                         stylesheet = this.xsl_path + "relacions.xsl";
 
                         HashMap<String, String> params = new HashMap();

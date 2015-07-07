@@ -182,7 +182,7 @@ public class Utilitats {
 
         for (String i : strFiles) {
 
-            acum = acum + "\\" + i;
+            acum = acum + "/" + i;
             File file = new File(acum);
 
             if (!file.exists()) {
@@ -215,7 +215,7 @@ public class Utilitats {
 
             String[] oChildren = file.list();
             for (int i = 0; i < oChildren.length; i++) {
-                deleteDirectory(new File(file.getPath() + "\\" + oChildren[i]));
+                deleteDirectory(new File(file.getPath() + "/" + oChildren[i]));
             }
         }
 

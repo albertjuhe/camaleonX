@@ -69,7 +69,7 @@ public abstract class Merge {
                 FileUtils.forceMkdir(temp);
             }
         } catch (IOException e) {
-            logger.error("Error creant directory:" + tmp + this.id_task + "\\");
+            logger.error("Error creant directory:" + tmp + this.id_task + "/");
         }
 
         Utilitats.unzip(file2, new File(tmp + id_task + Path.PATH_FITXER_ORIGEN.eval()));
@@ -133,7 +133,7 @@ public abstract class Merge {
                 FileUtils.forceMkdir(temp);
             }
         } catch (IOException e) {
-            logger.error("Error creant directory:" + tmp + this.id_task + "\\");
+            logger.error("Error creant directory:" + tmp + this.id_task + "/");
         }
 
         try {
@@ -141,7 +141,7 @@ public abstract class Merge {
                 FileUtils.forceMkdir(task);
             }
         } catch (IOException e) {
-            logger.error("Error creant directory:" + tmp + this.id_task + "\\");
+            logger.error("Error creant directory:" + tmp + this.id_task + "/");
         }
 
         //Directory temporal per guardar elements multimedia

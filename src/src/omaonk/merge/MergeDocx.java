@@ -59,7 +59,7 @@ public class MergeDocx extends Merge {
         this.skeleton = app + conf.eval("skeleton");
         this.tmp = app + conf.eval("tmp");
         this.temp = new File(tmp);
-        this.task = new File(tmp + this.id_task + "\\");
+        this.task = new File(tmp + this.id_task + "/");
 
     }
 
@@ -82,31 +82,31 @@ public class MergeDocx extends Merge {
             //------------- Diagrams ----------------------------------------
             String typeMedia = "diagrams";
             String pathMultimedia = tmp + this.id_task + Path.PATH_FITXER_TMP_DOCX.eval() + typeMedia;
-            File media = new File(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval() + "\\word\\" + typeMedia + "\\");
+            File media = new File(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval() + "/word/" + typeMedia + "/");
             if (iteracio == 1) {
                 if (media.exists()) {
-                    f.copyFolder(media, new File(pathMultimedia + "\\"));
+                    f.copyFolder(media, new File(pathMultimedia + "/"));
                 }
             }
 
-            media = new File(tmp + this.id_task + Path.PATH_FITXER_MERGE.eval() + "\\word\\" + typeMedia + "\\");
+            media = new File(tmp + this.id_task + Path.PATH_FITXER_MERGE.eval() + "/word/" + typeMedia + "/");
             if (media.exists()) {
-                f.copyFolder(media, new File(pathMultimedia + "\\" + typeMedia + +(iteracio + 1) + "\\"));
+                f.copyFolder(media, new File(pathMultimedia + "/" + typeMedia + +(iteracio + 1) + "/"));
             }
             //------------- Media ----------------------------------------
             typeMedia = "media";
             pathMultimedia = tmp + this.id_task + Path.PATH_FITXER_TMP_DOCX.eval() + typeMedia;
             if (iteracio == 1) {
-                media = new File(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval() + "\\word\\" + typeMedia + "\\");
+                media = new File(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval() + "/word/" + typeMedia + "/");
                 if (media.exists()) {
                     //f.copyFolder(media, new File(tmp + this.id_task + Path.PATH_FITXER_RESULTANT.eval() + "\\ppt\\media\\"));
-                    f.copyFolder(media, new File(pathMultimedia + "\\"));
+                    f.copyFolder(media, new File(pathMultimedia + "/"));
                 }
             }
 
-            media = new File(tmp + this.id_task + Path.PATH_FITXER_MERGE.eval() + "\\word\\" + typeMedia + "\\");
+            media = new File(tmp + this.id_task + Path.PATH_FITXER_MERGE.eval() + "/word/" + typeMedia + "/");
             if (media.exists()) {
-                f.copyFolder(media, new File(pathMultimedia + "\\" + typeMedia + +(iteracio + 1) + "\\"));
+                f.copyFolder(media, new File(pathMultimedia + "/" + typeMedia + +(iteracio + 1) + "/"));
             }
 
             //------------- embeddings ----------------------------------------
@@ -114,15 +114,15 @@ public class MergeDocx extends Merge {
             typeMedia = "embeddings";
             pathMultimedia = tmp + this.id_task + Path.PATH_FITXER_TMP_DOCX.eval() + typeMedia;
             if (iteracio == 1) {
-                media = new File(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval() + "\\word\\" + typeMedia + "\\");
+                media = new File(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval() + "/word/" + typeMedia + "/");
                 if (media.exists()) {
-                    f.copyFolder(media, new File(pathMultimedia + "\\"));
+                    f.copyFolder(media, new File(pathMultimedia + "/"));
                 }
             }
 
-            media = new File(tmp + this.id_task + Path.PATH_FITXER_MERGE.eval() + "\\word\\" + typeMedia + "\\");
+            media = new File(tmp + this.id_task + Path.PATH_FITXER_MERGE.eval() + "/word/" + typeMedia + "/");
             if (media.exists()) {
-                f.copyFolder(media, new File(pathMultimedia + "\\" + typeMedia + +(iteracio + 1) + "\\"));
+                f.copyFolder(media, new File(pathMultimedia + "/" + typeMedia + +(iteracio + 1) + "/"));
             }
 
             //Fem esquelet
@@ -131,11 +131,11 @@ public class MergeDocx extends Merge {
             // millor copiar-ho del primer document cap al resultat
             // Al skeleton no hauria d'haver-hi cap fitxer
             File settings = new File(tmp + this.id_task
-                    + "\\file1\\word\\settings.xml");
+                    + "/file1/word/settings.xml");
             if (settings.exists()) {
                 try {
                     f.copyFile(settings, new File(tmp + this.id_task
-                            + "\\result\\word\\settings.xml"));
+                            + "/result/word/settings.xml"));
                 } catch (IOException ioe) {
                     logger.error(ioe.getMessage());
                 }
@@ -143,15 +143,15 @@ public class MergeDocx extends Merge {
 
             //Modificar per Header i footer
             //Tant el header com el footer poden tenir elements relacionals al _rels
-            copyHeaderFooters(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval() + "word\\", tmp + this.id_task + Path.PATH_FITXER_RESULTANT.eval() + "word\\", tipologia);
-            copyHeaderFooters(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval() + "word\\_rels\\", tmp + this.id_task + Path.PATH_FITXER_RESULTANT.eval() + "word\\_rels\\", tipologia);
+            copyHeaderFooters(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval() + "word/", tmp + this.id_task + Path.PATH_FITXER_RESULTANT.eval() + "word/", tipologia);
+            copyHeaderFooters(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval() + "word/_rels/", tmp + this.id_task + Path.PATH_FITXER_RESULTANT.eval() + "word/_rels/", tipologia);
 
             try {
                 FileUtils.deleteDirectory(new File(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval()));
             } catch (java.io.IOException ioe) {
                 logger.error("Error:" + ioe.getMessage());
             }
-            f.renameDirectory(tmp + this.id_task + "\\" + Path.PATH_FITXER_RESULTANT.eval(), tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval());
+            f.renameDirectory(tmp + this.id_task + "/" + Path.PATH_FITXER_RESULTANT.eval(), tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval());
 
 
             return 0;

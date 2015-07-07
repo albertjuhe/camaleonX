@@ -56,7 +56,6 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import omaonk.exceptions.*;
 import org.apache.log4j.Logger;
 
 /**
@@ -110,7 +109,7 @@ public class standaloneDocx {
             if (!temp.exists()) {
                 FileUtils.forceMkdir(temp);
             }
-            File task = new File(tmp + xml_file_name + "\\");
+            File task = new File(tmp + xml_file_name + "/");
             
             if (!task.exists()) {
                 FileUtils.forceMkdir(task);
@@ -123,7 +122,7 @@ public class standaloneDocx {
             }
         } catch (IOException e) {
             System.err.println(ID_TAK_ID + " Error creant directory:" + tmp + xml_file_name
-                    + "\\" + e.getMessage());
+                    + "/" + e.getMessage());
         }
         
         Iterator<String> itr = this.tascaXML.getaLlistatContent().iterator();
@@ -153,7 +152,7 @@ public class standaloneDocx {
                 System.out.println(ID_TAK_ID + " Merge OK.");
 
                 // file1 = new File(tmp + xml_file_name + "\\" + resultName);
-                file1 = new File(tmp + xml_file_name + "\\" + Path.PATH_FITXER_ORIGEN.eval());
+                file1 = new File(tmp + xml_file_name + "/" + Path.PATH_FITXER_ORIGEN.eval());
             } else {
                 System.err.println(ID_TAK_ID + " Merge Error.");
             }
@@ -171,16 +170,16 @@ public class standaloneDocx {
              * té imatges el seu identificador és: suma de tots els identificadors del docuement.xml + el del header
              * Els identificadors únics d'imatge venen pel tag  <wp:docPr id="1" name="Rectangle 6"/>
              */
-            this.changeImageReferenceHeaders(tmp + xml_file_name + Path.PATH_FITXER_ORIGEN.eval() + "\\word\\");
+            this.changeImageReferenceHeaders(tmp + xml_file_name + Path.PATH_FITXER_ORIGEN.eval() + "word/");
 
             // suprimimos las variables sin valor
-            fileUtils.replace(new File(tmp + xml_file_name + Path.PATH_FITXER_ORIGEN.eval() + "word\\document.xml"), "\\[\\[.*?\\]\\]",
+            fileUtils.replace(new File(tmp + xml_file_name + Path.PATH_FITXER_ORIGEN.eval() + "word/document.xml"), "\\[\\[.*?\\]\\]",
                     "");
              //Copiem els arxius multimedia de la carpeta mediaobject, son arxius de video, audio, diagrames, etc...
             for (int j = 0; j < multimediaFolders.length; j++) {
                 String pathMultimedia = tmp + xml_file_name + Path.PATH_FITXER_TMP_DOCX.eval() + multimediaFolders[j];
-                String mediaFolder = tmp + xml_file_name + Path.PATH_FITXER_ORIGEN.eval() + "word\\" + multimediaFolders[j] + "\\";
-                fileUtils.copyFolder(new File(pathMultimedia), new File(mediaFolder + "\\"));
+                String mediaFolder = tmp + xml_file_name + Path.PATH_FITXER_ORIGEN.eval() + "word/" + multimediaFolders[j] + "/";
+                fileUtils.copyFolder(new File(pathMultimedia), new File(mediaFolder + "/"));
             }
             
             Date dNow = new Date();
@@ -190,7 +189,7 @@ public class standaloneDocx {
             System.out.println(ID_TAK_ID + " Merged all files Correctly.");
 
             
-            File tempFile = new File(tmp + xml_file_name + "\\");
+            File tempFile = new File(tmp + xml_file_name + "/");
             System.out.println(ID_TAK_ID + " Removing temporal files."
                     + tempFile.getAbsolutePath());
             
@@ -199,7 +198,7 @@ public class standaloneDocx {
 
             // FileUtils f = new FileUtils();
 
-            File tempFile = new File(tmp + xml_file_name + "\\");
+            File tempFile = new File(tmp + xml_file_name + "/");
             System.err.println(ID_TAK_ID + " Removing temporal files."
                     + tempFile.getAbsolutePath());
             

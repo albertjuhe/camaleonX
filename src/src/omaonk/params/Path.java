@@ -32,13 +32,13 @@ package omaonk.params;
 
 public enum Path {
 
-    PATH_FITXER_ORIGEN("\\file1\\"), 
-    PATH_FITXER_MERGE("\\file2\\"), 
-    PATH_FITXER_RESULTANT("\\result\\"), 
-    PATH_FITXER_TMP_PPTX("\\result_final\\ppt\\"), 
-    PATH_FITXER_TMP_DOCX("\\result_final\\word\\"),
-    PATH_FITXER_PPTX("\\result_final\\"), 
-    PATH_FITXER_DOCX("\\result_final\\");
+    PATH_FITXER_ORIGEN("/file1/"), 
+    PATH_FITXER_MERGE("/file2/"), 
+    PATH_FITXER_RESULTANT("/result/"), 
+    PATH_FITXER_TMP_PPTX("/result_final/ppt/"), 
+    PATH_FITXER_TMP_DOCX("/result_final/word/"),
+    PATH_FITXER_PPTX("/result_final/"), 
+    PATH_FITXER_DOCX("/result_final/");
     private String valor;
 
     private Path(String valor) {
