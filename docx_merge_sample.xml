@@ -5,8 +5,8 @@
         <meta key="type" value="docx"/> <!-- docx, pptx -->
     </metas>
     <contents>
-          <content include="1" href="C:\camaleonx\documents\1.docx"/>
-        <content  include="1" href="C:\camaleonx\documents\2.docx"/>
+          <content include="1" href="./documents/1.docx"/>
+        <content  include="1" href="./documents/2.docx"/>
        
     </contents>
 </profile>

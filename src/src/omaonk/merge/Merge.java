@@ -158,10 +158,10 @@ public abstract class Merge {
   
 
     /*
-     * Neteja un directori.
+     * Clean directory.
      *
-     * @param dirTmp: Directori de tasca
-     * @param subDirTmp: Subdirectori a netejar.
+     * @param dirTmp: task directory
+     * @param subDirTmp: Subdirectory to clean.
      * @return 0 error, 1 ok
      */
     protected int netejaDirectory(String dirTmp) {
@@ -194,7 +194,7 @@ public abstract class Merge {
             } else {
             }
         } catch (IOException e) {
-            logger.error("Error creant directory:" + pathMultimedia);
+            logger.error("Error creating directory::" + pathMultimedia);
         }
     }
 }

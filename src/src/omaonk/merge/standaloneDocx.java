@@ -151,7 +151,7 @@ public class standaloneDocx {
                 
                 System.out.println(ID_TAK_ID + " Merge OK.");
 
-                // file1 = new File(tmp + xml_file_name + "\\" + resultName);
+               
                 file1 = new File(tmp + xml_file_name + "/" + Path.PATH_FITXER_ORIGEN.eval());
             } else {
                 System.err.println(ID_TAK_ID + " Merge Error.");

@@ -1,1 +1,1 @@
-java -jar camaleonx.jar -U camaleonx.properties pptx_merge_sample.xml -Xms256m -Xmx1024m -Dlog4j.configuration=file:/./logs/camaleonx.log4j.xml -Dlog4j.debug=true -Dcamaleonx.local./home=logs  
+java -jar camaleonx.jar -U camaleonx.properties pptx_merge_sample.xml -Xms1024m -Xmx1024m -Dlog4j.configuration=file:/./logs/camaleonx.log4j.xml -Dlog4j.debug=true -Dcamaleonx.local./home=logs  
