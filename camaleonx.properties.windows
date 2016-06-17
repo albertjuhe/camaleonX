@@ -1,0 +1,17 @@
+base=C:\\Projectes_git\\camaleonx_github\\camaleonX\\resources\\files
+results=C:\\Projectes_git\\camaleonx_github\\camaleonX\\results\\
+
+#xsl docx path
+app=C:\\Projectes_git\\camaleonx_github\\camaleonX\\resources\\
+tmp=C:\\Projectes_git\\camaleonx_github\\camaleonX\\resources\\tmp\\
+xsl=xsl\\
+skeleton=skeleton\\
+
+tmp_pptx=tmp\\
+skeleton_pptx=skeleton_pptx\\
+xsl_pptx=xsl_pptx\\
+
+#Templates
+templates=templates\\
+
+

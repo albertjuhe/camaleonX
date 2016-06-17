@@ -5,9 +5,10 @@
         <meta key="type" value="pptx"/> <!-- docx, pptx -->
     </metas>
     <contents>
-        <content include="1" href="C:\camaleonx_github\camaleonX\documents\1.pptx"/>
-        <content  include="1" href="C:\camaleonx_github\camaleonX\documents\2.pptx"/>
-        <content include="1" href="C:\camaleonx_github\camaleonX\documents\3.pptx"/>
-        <content  include="1" href="C:\camaleonx_github\camaleonX\documents\4.pptx"/>
+        <content include="1" href="./documents/1.pptx"/>
+        <content  include="1" href="./documents/2.pptx"/>
+        <content include="1" href="./documents/3.pptx"/>
+        <content  include="1" href="./documents/4.pptx"/>
+		<content  include="1" href="./documents/5.pptx"/>
     </contents>
 </profile>

@@ -1,0 +1,17 @@
+base=/home/ajuhe/camaleonx/resources/files/
+results=/home/ajuhe/camaleonx/results/
+
+#xsl docx path
+app=/home/ajuhe/camaleonx/resources/
+tmp=/home/ajuhe/camaleonx/resources/tmp/
+xsl=xsl/
+skeleton=skeleton/
+
+tmp_pptx=tmp/
+skeleton_pptx=skeleton_pptx/
+xsl_pptx=xsl_pptx/
+
+#Templates
+templates=templates/
+
+
