@@ -34,7 +34,6 @@
 package camaleonx;
 
 import omaonk.config.Config;
-import omaonk.merge.standaloneDocx;
 import java.io.File;
 import omaonk.exceptions.FileErrorException;
 
@@ -94,8 +93,7 @@ public class Main {
 
         }
 
-        System.out.println("CamaleonX v.0.1 Command line execution.");
-        //Quant s'executa desde línea de comanda, s'ha de passar un fitxer obligatoriament
+        System.out.println("CamaleonX  " + omaonk.params.general.version + "v. Command line execution.");
         if (args.length > i) {
             String Taskfilename = args[i++];
             File tskFile = new File(Taskfilename);

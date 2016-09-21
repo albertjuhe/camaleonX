@@ -143,7 +143,7 @@ public class standalonePPTX {
         iteracio = 0;
 
         /*
-         * Comencem la fusió entre els documents que marca el xml de la tasca.
+         * Start merging documents
          */
 
         while (itr.hasNext() && stateMerge != -1) {

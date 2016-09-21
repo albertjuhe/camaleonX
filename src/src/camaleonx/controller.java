@@ -47,6 +47,8 @@ public class controller {
         } else if (taskType.equalsIgnoreCase("pptx")) {
             standalonePPTX merger = new standalonePPTX(this.tascaXML);
             merger.execute();
+        } else {
+            System.out.println("Error merging: type not supportet:  <meta key=\"type\" value=\"xxxx\"/> <!-- docx or pptx -->");
         }
     }
 }

@@ -111,13 +111,13 @@ public abstract class Merge {
     }
 
     /*
-     * Crea l'estructura de directoris per fer la fusio de documents
+     * Create folders structure for merging operation
      *
      * |--tmp
      *    |-- id_task
-     *       |-- file1 (origen)
+     *       |-- file1 (origin)
      *       |-- file2 (merge)
-     *       |-- result (resultant)
+     *       |-- result (result)
      *       |-- mediaObjects (media files)
      *
      * result = origen + merge
@@ -133,7 +133,7 @@ public abstract class Merge {
                 FileUtils.forceMkdir(temp);
             }
         } catch (IOException e) {
-            logger.error("Error creant directory:" + tmp + this.id_task + "/");
+            logger.error("Error creanting folder:" + tmp + this.id_task + "/:" + e.getMessage());
         }
 
         try {
@@ -141,18 +141,17 @@ public abstract class Merge {
                 FileUtils.forceMkdir(task);
             }
         } catch (IOException e) {
-            logger.error("Error creant directory:" + tmp + this.id_task + "/");
+            logger.error("Error creanting folder:" + tmp + this.id_task + "/:" + e.getMessage());
         }
 
-        //Directory temporal per guardar elements multimedia
-        this.creaMultimediaFolder(tmp + this.id_task + path, "media");
-        this.creaMultimediaFolder(tmp + this.id_task + path, "diagrams");
-        this.creaMultimediaFolder(tmp + this.id_task + path, "embeddings");
+        //Temporal folders to store media files
+        this.createMultimediaFolder(tmp + this.id_task + path, "media");
+        this.createMultimediaFolder(tmp + this.id_task + path, "diagrams");
+        this.createMultimediaFolder(tmp + this.id_task + path, "embeddings");
 
-        //Netaja de directoris temporals resultants d'aplicar XSL
-        //--this.netejaDirectory(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval());
-        this.netejaDirectory(tmp + this.id_task + Path.PATH_FITXER_MERGE.eval());
-        this.netejaDirectory(tmp + this.id_task + Path.PATH_FITXER_RESULTANT.eval());
+        //Clean temporal folders after the xsl
+        this.cleanFolder(tmp + this.id_task + Path.PATH_FITXER_MERGE.eval());
+        this.cleanFolder(tmp + this.id_task + Path.PATH_FITXER_RESULTANT.eval());
     }
 
   
@@ -164,7 +163,7 @@ public abstract class Merge {
      * @param subDirTmp: Subdirectory to clean.
      * @return 0 error, 1 ok
      */
-    protected int netejaDirectory(String dirTmp) {
+    protected int cleanFolder(String dirTmp) {
         try {
             // Netejem les carpetes
             File dir = new File(dirTmp);
@@ -181,7 +180,7 @@ public abstract class Merge {
         }
     }
 
-    protected void creaMultimediaFolder(String pathTasca, String tipo) {
+    protected void createMultimediaFolder(String pathTasca, String tipo) {
         /*
          * Creem el directori multimedia per no anar arrossegant media en
          * els zips.

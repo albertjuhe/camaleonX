@@ -38,7 +38,7 @@ import omaonk.params.Path;
 import omaonk.transforms.TransformPptx;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-
+import com.eclipsesource.json.*;
 import omaonk.params.general;
 import omaonk.utils.*;
 
@@ -48,12 +48,80 @@ import omaonk.utils.*;
  */
 public class MergePPTX extends Merge {
 
-    private static Logger logger = Logger.getLogger(MergePPTX.class.getName());
+    private static Logger LOGGER = Logger.getLogger(MergePPTX.class.getName());
     private int numFitxers = 0;
-    private String xsl_pptx;
-  //  private String[] elements_estructurals = {"tags", "theme", "slides", "handoutMasters", "notesMasters", "notesSlides", "slideLayouts"};
-    private String[] elements_estructurals = {"charts","tags", "theme", "slides", "handoutMasters", "notesMasters", "notesSlides", "slideLayouts"};
-   public int Slides=0;
+    private final String xsl_pptx;
+    private final String[] elements_estructurals = {"charts","tags", "theme", "slides", "handoutMasters", "notesMasters", "notesSlides", "slideLayouts"};
+    public int Slides=0;
+    private final String PPTXFOLDERSTRUCTURE = " {\n" +
+" 	\"folders\": [{\n" +
+" 		\"name\": \"_rels\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"customXML\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"customXML/_rels\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"docProps\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/_rels\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/charts\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/charts/_rels\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/diagrams\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/drawings\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/drawings/_rels\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/embeddings\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/embeddings/embeddings1\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/embeddings/embeddings2\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/fonts\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/handoutMasters\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/handoutMasters/_rels\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/media\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/media/media1\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/media/media2\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/notesMasters\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/notesMasters/_rels\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/notesSlides\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/notesSlides/_rels\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/slideLayout\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/slideLayout/_rels\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/slideMaster\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/slideMaster/_rels\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/slides\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/slides/_rels\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/tags\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/theme\"\n" +
+" 	}, {\n" +
+" 		\"name\": \"ppt/theme/_rels\"\n" +
+" 	}]\n" +
+" }";
 
     public MergePPTX(File file1, File file2, String id_task, String type,
             String fileNameResult, int numFitxers) {
@@ -65,7 +133,7 @@ public class MergePPTX extends Merge {
         this.numFitxers = numFitxers;
         this.tipo_document = DocumentType.PPTX.eval();
         this.tmp = app + conf.eval("tmp_pptx");
-        this.skeleton = app + conf.eval("skeleton_pptx");
+        //this.skeleton = app + conf.eval("skeleton_pptx");
         this.xsl_pptx = app + conf.eval("xsl_pptx");
         this.temp = new File(tmp);
         this.task = new File(tmp + this.id_task + "/");
@@ -76,12 +144,45 @@ public class MergePPTX extends Merge {
     }
 
     private void creaEstructuraTemporal() {
-        File skeletonFile = new File(skeleton);
+       // File skeletonFile = new File(skeleton);
         Utilitats fileUtils = new Utilitats();
+        /*
         if (skeletonFile.exists()) {
-            fileUtils.copyFolder(new File(skeleton), new File(tmp + this.id_task));
+         //   fileUtils.copyFolder(new File(skeleton), new File(tmp + this.id_task));
+            this.createTemporalPPTXFolders(tmp + this.id_task,this.PPTXFOLDERSTRUCTURE);
+        } else {
+            LOGGER.error("Error: Can't find pptx skeleton in " + skeleton);
         }
+        */
+        this.createTemporalPPTXFolders(tmp + this.id_task,this.PPTXFOLDERSTRUCTURE);
         fileUtils.renameDirectory(tmp + this.id_task + "/result/", tmp + this.id_task + "/result_final/");
+    }
+    
+    /*
+    * Create the temporal folders for PPTX
+    * The folder structure to create is described via JSON
+    Folder structure:     
+  
+    */
+    private void createTemporalPPTXFolders(String targetFolder,String structure) {
+        Utilitats fileUtils = new Utilitats();
+        
+        fileUtils.mkDir(new File(targetFolder));
+        fileUtils.mkDir(new File(targetFolder + "/result/"));
+              
+        JsonArray items= Json.parse(structure).asObject().get("folders").asArray();
+        String path = targetFolder + "/result/";
+        for(JsonValue item : items) {
+            String value = item.asObject().get("name").asString();
+            File file = new File(path + value);
+            if (!file.exists()) {
+                if (file.mkdir()) {
+                   LOGGER.debug("directory created successfully");
+                } else {
+                   LOGGER.error("directory is not created");
+                }
+            }
+        }
     }
 
     protected int merging(int iteracio) {
@@ -90,19 +191,19 @@ public class MergePPTX extends Merge {
 
         //Create temporal media files folder and clean temporal folders
         this.createStructure(Path.PATH_FITXER_TMP_PPTX.eval());
-
-        File skeletonFile = new File(skeleton);
-
-        if (skeletonFile.exists()) {
-            fileUtils.copyFolder(new File(skeleton), task);
-
-            fileUtils.unzip(file2, new File(tmp + id_task + Path.PATH_FITXER_MERGE.eval()));
+      
+       // File skeletonFile = new File(skeleton);
+        this.createTemporalPPTXFolders(tmp + this.id_task,this.PPTXFOLDERSTRUCTURE);      
+            
+        if (task.exists()) {
+            //fileUtils.copyFolder(new File(skeleton), task);
+          fileUtils.unzip(file2, new File(tmp + id_task + Path.PATH_FITXER_MERGE.eval()));
 
             // Renombrem el fitxer [Content_types].xml del segon document,
             // perque sinó el xsl no el llegeix, el deicem com:
             // Content_Types.xml
             if (general.debug == 1) {
-                logger.info("Converting Content_type ...");
+                LOGGER.info("Converting Content_type ...");
             }
             try {
                 fileUtils.copyFile(new File(tmp + id_task + Path.PATH_FITXER_MERGE.eval()
@@ -112,14 +213,14 @@ public class MergePPTX extends Merge {
 
                 // copiem el ppt\presProps.xml del fitxer 1
                 if (general.debug == 1) {
-                    logger.info("Copiant presProps.xml ...");
+                    LOGGER.info("Copiant presProps.xml ...");
                 }
                 fileUtils.copyFile(new File(tmp + id_task + Path.PATH_FITXER_ORIGEN.eval()
                         + "/ppt/presProps.xml"), new File(tmp
                         + id_task + Path.PATH_FITXER_RESULTANT.eval()
                         + "/ppt/presProps.xml"));
                 if (general.debug == 1) {
-                    logger.info("Copiant tableStyles.xml ...");
+                    LOGGER.info("Copiant tableStyles.xml ...");
                 }
                 fileUtils.copyFile(new File(tmp + id_task + Path.PATH_FITXER_ORIGEN.eval()
                         + "/ppt/tableStyles.xml"), new File(tmp
@@ -127,7 +228,7 @@ public class MergePPTX extends Merge {
                         + "/ppt/tableStyles.xml"));
 
                 if (general.debug == 1) {
-                    logger.info("Copiant viewProps.xml ...");
+                    LOGGER.info("Copiant viewProps.xml ...");
                 }
                 fileUtils.copyFile(new File(tmp + id_task + Path.PATH_FITXER_ORIGEN.eval()
                         + "/ppt/viewProps.xml"), new File(tmp
@@ -136,7 +237,7 @@ public class MergePPTX extends Merge {
 
                 // -------------- DocProps ---------------------
                 if (general.debug == 1) {
-                    logger.info("Copying DocProps ...");
+                    LOGGER.info("Copying DocProps ...");
                 }
                 copiaContingutEstructural(tmp + id_task + Path.PATH_FITXER_ORIGEN.eval() + "/docProps/",
                         tmp + id_task + Path.PATH_FITXER_RESULTANT.eval() + "/docProps/");
@@ -144,19 +245,19 @@ public class MergePPTX extends Merge {
 
                 //-------------- _rels ---------------------------------------
                 if (general.debug == 1) {
-                    logger.info("Copying rels.xml ...");
+                    LOGGER.info("Copying rels.xml ...");
                 }
                 fileUtils.copyFile(new File(xsl_pptx + "/rels.xml"), new File(tmp
                         + id_task + Path.PATH_FITXER_RESULTANT.eval()
                         + "/_rels/.rels"));
             } catch (IOException ioe) {
-                logger.error(ioe.getMessage());
+                LOGGER.error(ioe.getMessage());
             }
 
             //Tractament d'elements estructurals sense tractament, nomes copia
             for (int i = 0; i < elements_estructurals.length; i++) {
                 if (general.debug == 1) {
-                    logger.info("Copiant " + elements_estructurals[i] + " ...");
+                    LOGGER.info("Copiant " + elements_estructurals[i] + " ...");
                 }
                 copiaContingutEstructural(tmp + id_task + Path.PATH_FITXER_ORIGEN.eval() + "/ppt/" + elements_estructurals[i] + "/",
                         tmp + id_task + Path.PATH_FITXER_TMP_PPTX.eval() + elements_estructurals[i] + "/");
@@ -176,7 +277,7 @@ public class MergePPTX extends Merge {
 */
             // ------- slideMasters, son les plantilles master per crear slides ----
             if (general.debug == 1) {
-                logger.info("Copying slideMasters ...");
+                LOGGER.info("Copying slideMasters ...");
             }
             this.copiaContingutEstructuralXSL(tmp + id_task + Path.PATH_FITXER_ORIGEN.eval() + "/ppt/slideMasters/",
                     tmp + id_task + Path.PATH_FITXER_TMP_PPTX.eval() + "slideMasters/",
@@ -188,7 +289,7 @@ public class MergePPTX extends Merge {
 
             // -------------- fonts ---------------------
             if (general.debug == 1) {
-                logger.info("Copiant fonts ...");
+                LOGGER.info("Copiant fonts ...");
             }
             copiaContingutEstructural(tmp + id_task + Path.PATH_FITXER_ORIGEN.eval() + "/ppt/fonts/",
                     tmp + id_task + Path.PATH_FITXER_TMP_PPTX.eval() + "fonts/");
@@ -197,7 +298,7 @@ public class MergePPTX extends Merge {
 
             //------------- Diagrams ----------------------------------------
             if (general.debug == 1) {
-                logger.info("Copying Diagrams ...");
+                LOGGER.info("Copying Diagrams ...");
             }
             String typeMedia = "diagrams";
             String pathMultimedia = tmp + this.id_task + Path.PATH_FITXER_TMP_PPTX.eval() + typeMedia;
@@ -240,7 +341,7 @@ public class MergePPTX extends Merge {
 
             //---------------------- Drawings ----------
             if (general.debug == 1) {
-                logger.info("Copiant Drawings ...");
+                LOGGER.info("Copiant Drawings ...");
             }
             copiaContingutEstructural(tmp + id_task + Path.PATH_FITXER_ORIGEN.eval() + "/ppt/drawings/",
                     tmp + id_task + Path.PATH_FITXER_RESULTANT.eval() + "/ppt/drawings/");
@@ -270,7 +371,7 @@ public class MergePPTX extends Merge {
              this.Slides = mergeXSLPPTX.nSlides;
             //------------- Media ----------------------------------------
             if (general.debug == 1) {
-                logger.info("Copiant media ...");
+                LOGGER.info("Copiant media ...");
             }
             typeMedia = "media";
             pathMultimedia = tmp + this.id_task + Path.PATH_FITXER_TMP_PPTX.eval() + typeMedia;
@@ -288,7 +389,7 @@ public class MergePPTX extends Merge {
 
             //------------- embeddings ----------------------------------------
             if (general.debug == 1) {
-                logger.info("Copiant embeddings ...");
+                LOGGER.info("Copiant embeddings ...");
             }
             typeMedia = "embeddings";
             pathMultimedia = tmp + this.id_task + Path.PATH_FITXER_TMP_PPTX.eval() + typeMedia;
@@ -305,12 +406,12 @@ public class MergePPTX extends Merge {
             }
             //-----------------------------------------------------------------------------------------
             if (general.debug == 1) {
-                logger.info("Borrant i copiant directori ...");
+                LOGGER.info("Remove and copy folder ...");
             }
             try {
                 FileUtils.deleteDirectory(new File(tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval()));
             } catch (java.io.IOException ioe) {
-                logger.error("Error:" + ioe.getMessage());
+                LOGGER.error("Error:" + ioe.getMessage());
             }
             fileUtils.renameDirectory(tmp + this.id_task + "/" + Path.PATH_FITXER_RESULTANT.eval(), tmp + this.id_task + Path.PATH_FITXER_ORIGEN.eval());
 
@@ -318,8 +419,8 @@ public class MergePPTX extends Merge {
             return 0;
 
         } else {
-            logger.error("No existe el directorio: "
-                    + skeletonFile.getAbsolutePath());
+            LOGGER.error("Doesn't exist: "
+                    + task.getAbsolutePath());
 
 
             return -1;
@@ -351,7 +452,7 @@ public class MergePPTX extends Merge {
                 }
             }
         } else {
-            logger.warn("No existe el fichero o directorio: " + directori_origen);
+            LOGGER.warn("No existe el fichero o directorio: " + directori_origen);
         }
 
     }
